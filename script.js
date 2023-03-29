@@ -3,6 +3,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
 let computerSelection;
+let roundResult;
 
 function getComputerChoice(){
   let selection = Math.floor(Math.random() * 3);
@@ -12,6 +13,7 @@ function getComputerChoice(){
 const buttons = document.querySelectorAll("button.selection-button");
 const displayPlayerScore = document.querySelector('#player-score');
 const displayComputerScore = document.querySelector('#computer-score');
+const displayResult = document.querySelector('#display-result');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -24,31 +26,32 @@ buttons.forEach((button) => {
 
 function playRound(playerSelection, computerSelection){
   if(playerSelection === computerSelection){
-    console.log("It`s a tie! " + playerSelection + " ties with " + computerSelection);
+    roundResult = "It`s a tie! " + playerSelection + " ties with " + computerSelection;
   }else if(playerSelection == "Rock" && computerSelection == "Scissors"){
     playerScore++;
-    console.log("You won! " + playerSelection + " beats " + computerSelection);
+    roundResult = "You won! " + playerSelection + " beats " + computerSelection;
   }else if(playerSelection == "Rock" && computerSelection == "Paper"){
     computerScore++;
-    console.log("You lose! " + computerSelection + " beats " + playerSelection);
+    roundResult = "You lose! " + computerSelection + " beats " + playerSelection;
   }else if(playerSelection == "Scissors" && computerSelection == "Rock"){
     computerScore++;
-    console.log("You lose! " + computerSelection + " beats " + playerSelection);    
+    roundResult = "You lose! " + computerSelection + " beats " + playerSelection;    
   }else if(playerSelection == "Scissors" && computerSelection == "Paper"){
     playerScore++;
-    console.log("You won! " + playerSelection + " beats " + computerSelection);
+    roundResult = "You won! " + playerSelection + " beats " + computerSelection;
   }else if(playerSelection == "Paper" && computerSelection == "Rock"){
     playerScore++;
-    console.log("You won! " + playerSelection + " beats " + computerSelection);
+    roundResult = "You won! " + playerSelection + " beats " + computerSelection;
   }else if(playerSelection == "Paper" && computerSelection == "Scissors"){
     computerScore++;
-    console.log("You lose! " + computerSelection + " beats " + playerSelection);
+    roundResult = "You lose! " + computerSelection + " beats " + playerSelection;
   }
 }
 
 function updateScore(){
   displayPlayerScore.textContent = playerScore;
   displayComputerScore.textContent = computerScore;
+  displayResult.textContent = roundResult;
 }
 
 
