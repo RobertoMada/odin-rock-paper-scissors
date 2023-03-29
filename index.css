@@ -1,0 +1,11 @@
+body{
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game-container{
+  background-color: pink;
+  width: 500px;
+  height: 500px;
+}
