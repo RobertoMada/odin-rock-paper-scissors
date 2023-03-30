@@ -5,24 +5,32 @@ let playerSelection;
 let computerSelection;
 let roundResult;
 
+const buttons = document.querySelectorAll("button.selection-button");
+const displayPlayerScore = document.querySelector('#player-score');
+const displayComputerScore = document.querySelector('#computer-score');
+const displayResult = document.querySelector('#display-result');
+const gameResult = document.querySelector('#game-result')
+
 function getComputerChoice(){
   let selection = Math.floor(Math.random() * 3);
   return choiceArray.at(selection);
 } 
 
-const buttons = document.querySelectorAll("button.selection-button");
-const displayPlayerScore = document.querySelector('#player-score');
-const displayComputerScore = document.querySelector('#computer-score');
-const displayResult = document.querySelector('#display-result');
+
 
 buttons.forEach((button) => {
-  button.addEventListener('click', () => {
+  button.addEventListener('click', function getPlayerChoice(){
     playerSelection = button.textContent;
-    computerSelection = getComputerChoice();
-    playRound(playerSelection,computerSelection);
-    updateScore();
-  })
-})
+    playGame();
+  });
+});
+
+function playGame(){
+  computerSelection = getComputerChoice();
+  playRound(playerSelection,computerSelection);
+  updateScore();
+  checkWinner();
+}
 
 function playRound(playerSelection, computerSelection){
   if(playerSelection === computerSelection){
@@ -54,5 +62,16 @@ function updateScore(){
   displayResult.textContent = roundResult;
 }
 
+function checkWinner(){
+  if(computerScore == 5){
+    gameResult.textContent = 'You lose! HaHaHa';
+    buttons.forEach(button => button.remove());
+  
+       
+  }else if(playerScore == 5){
+    gameResult.textContent = 'You win! Good game!';
+    buttons.forEach(button => button.remove());
+  }
+}
 
 
