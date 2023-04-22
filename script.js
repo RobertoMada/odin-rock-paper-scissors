@@ -9,7 +9,8 @@ const buttons = document.querySelectorAll("button.selection-button");
 const displayPlayerScore = document.querySelector('#player-score');
 const displayComputerScore = document.querySelector('#computer-score');
 const displayResult = document.querySelector('#display-result');
-const gameResult = document.querySelector('#game-result')
+const gameResult = document.querySelector('#game-result');
+const resetButton = document.querySelector('#reset-button');
 
 function getComputerChoice(){
   let selection = Math.floor(Math.random() * 3);
@@ -20,7 +21,7 @@ function getComputerChoice(){
 
 buttons.forEach((button) => {
   button.addEventListener('click', function getPlayerChoice(){
-    playerSelection = button.textContent;
+    playerSelection = button.title;
     playGame();
   });
 });
@@ -66,12 +67,25 @@ function checkWinner(){
   if(computerScore == 5){
     gameResult.textContent = 'You lose! HaHaHa';
     buttons.forEach(button => button.remove());
-  
+    resetButton.removeAttribute('hidden');
        
   }else if(playerScore == 5){
     gameResult.textContent = 'You win! Good game!';
     buttons.forEach(button => button.remove());
+    resetButton.removeAttribute('hidden');
   }
 }
 
+resetButton.addEventListener('click', restartGame);
 
+function restartGame(){
+  console.log("restart game");
+  resetButton.setAttribute('hidden', 'hidden');
+  displayComputerScore.textContent = '0';
+  displayPlayerScore.textContent = '0';
+  playerScore = 0;
+  computerScore = 0;
+  gameResult.textContent = '';
+  displayResult.textContent = '';
+  buttons.forEach(button => document.querySelector('.selection-container').appendChild(button));
+}

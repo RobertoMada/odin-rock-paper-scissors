@@ -7,16 +7,36 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="header">ROCK PAPER SCISSORS</div>
   <div class="game-container">
-    <p>Player Score</p>
-    <p id="player-score">0</p>
-    <p>Computer Score</p>
-    <p id="computer-score">0</p>
+    <div class="score-container">
+      <div class="player-container">
+        <p>Player Score</p>
+        <p id="player-score">0</p>
+      </div>
+      <div class="computer-container">
+        <p>Computer Score </p>
+        <p id="computer-score">0</p>
+      </div>
+    </div>
     <p id="display-result"></p>
-    <button class="selection-button">Rock</button>
-    <button class="selection-button">Paper</button>
-    <button class="selection-button">Scissors</button>
+    <div class="selection-container">
+      <button class="selection-button" title="Rock"><img class="selection-image" src="images/rock-emoji.png" alt="Rock"></button>
+      <button class="selection-button" title="Paper"><img class="selection-image" src="images/paper-emoji.png" alt="Paper"></button>
+      <button class="selection-button" title="Scissors"><img class="selection-image" src="images/scissors-emoji.png" alt="Scissors"></button>
+    </div>
     <p id="game-result"></p>
-  </div> 
+    <div class="reset-container">
+      <button id="reset-button" hidden>Reset</button>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>Copyright ©
+      <script>
+        document.write(new Date().getFullYear())
+      </script>
+      <a href="https://github.com/RobertoMada" target="_blank">RobertoMada</a>  
+    </p>
+  </footer> 
 </body>
 </html>
